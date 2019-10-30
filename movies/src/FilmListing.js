@@ -5,15 +5,18 @@ import FilmRow from './FilmRow'
 import React, { Component } from 'react'
 
 export default class FilmListing extends Component {
-    constructor(props){
-        super(props)
+  
     
-    this.state={
+    state={
         filter : 'all'
     }
-}
-     filmRow = this.props.films.map(item =>{ 
-        return <FilmRow  item={item.title} poster={item.poster_path} date ={item.release_date}  />
+
+    filmRow = this.props.film.map(item =>{ 
+        return <FilmRow  item={item.title} 
+        poster={item.poster_path} 
+        date ={item.release_date} 
+        handleFaveToggle={() => this.props.handleFaveToggle(item)} 
+        isFave={this.props.fave} />
     })
 
     handleFilterClick = (filter)=> {
@@ -31,7 +34,6 @@ export default class FilmListing extends Component {
     <div className="film-list-filters"> 
     <div className={`film-list-filter ${this.state.filter === 'all' ? 'is-active' : ''}`} onClick={() => this.handleFilterClick('all')}>
             ALL
-            <span className="section-count">{this.props.films.length}</span>
         </div>
         <div className={`film-list-filter ${this.state.filter === 'fave' ? 'is-active' : ''}`} onClick={() => this.handleFilterClick('all')}>
             FAVES
@@ -42,8 +44,6 @@ export default class FilmListing extends Component {
         {this.filmRow}
     </div>
     
-
-   
 
         )
     }

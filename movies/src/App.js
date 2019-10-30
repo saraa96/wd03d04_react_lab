@@ -7,13 +7,24 @@ import TMDB from './TMDB'
 import './normalize.css'
 import React, { Component } from 'react'
 export default class App extends Component {
+  state={
+    film:TMDB.films,
+    faves:[],
+    current:{}
+  }
   render() {
     return (
       <div className="film-library">
-   <FilmListing films={TMDB.films}/>
+   
+       
+      <FilmListing film ={this.state.film} fave = {this.state.faves}  handleFaveToggle={() => this.props.handleFaveToggle()} />
+​
       <div className="film-details">
         <h1 className="section-title">DETAILS</h1>
+        <FilmDetails film={this.state.film} current={this.state.current} />
+        
       </div>
+​
     </div>
     )
   }
