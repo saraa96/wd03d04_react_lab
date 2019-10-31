@@ -2,31 +2,19 @@ import React, { Component } from 'react'
 
 export default class Fave extends Component {
 
-    
-   state={
-        isFave : false
-    
+  handleClick = (e) => {
+    console.log("handling Fave click!")
+    e.stopPropagation()
+    this.props.onFaveToggle()
 }
-handleCli = (e)=> {
-        e.stopPropagation()
-        console.log('Handling Fave click!')
-      
-        // Add this line. You'll call the function passed through props
-        this.props.handleFaveToggle()
-      
-        // Delete the `setState` line. You no longer track state here
-        // this.setState({isFave: !this.state.isFave})
 
-      }
 
-      render() {
-           
-        const isFave = (this.props.isFave) ? 'remove_from_queue' : 'add_to_queue'
-                return (
-                   
-                     <div className={"film-row-fave "+isFave} onClick = {(e)=>this.handleClick(e)}> 
-                    <p className="material-icons" >add_to_queue</p>
-                  </div>
-                )
-            }
+render() {
+  const isFave = (this.props.isFave) ? 'remove_from_queue' : 'add_to_queue'
+  return (
+      <div className={"film-row-fave " + isFave} onClick={this.handleClick}>
+          <p className="material-icons">{isFave}</p>
+      </div>
+  )
+}
         }
