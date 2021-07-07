@@ -1,8 +1,9 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Starting a Film Project
 
-Fork and clone the `react-film` repo.
-
-This project was created with `create-react-app`. Once you have the app cloned, you should run `npm install`. You can then run it with `npm run start`.
+1. Start by running `create-react-app reactfilm`
+1. Copy and replace your `index.css` with the one in this project
+1. Copy the `normalize.css` into your project `src` directory
+1. Include your `normalize.css` into the `index.js`
 
 ## Your Mission
 
